@@ -1,0 +1,19 @@
+#Replace username   with your Transmission RPC username
+#Replace password   with your Transmission RPC password
+#Replace ip_address with your Pi IP address
+
+alias list_torrents="transmission-remote [ip_address] -n usename:password --list"
+
+alias add_torrent="transmission-remote [ip_address] -n username:password --add"
+
+function stop_torrent() {
+  transmission-remote [ip_address] -n username:password -t $1 --stop
+} 
+
+function start_torrent() {
+  transmission-remote [ip_address] -n username:password -t $1 --start
+}
+
+function start_torrent_client() {
+  sudo service transmission-daemon start
+}
